@@ -44,6 +44,7 @@ const Auth = {
 			return token || Error.UNAUTHORIZED
 		}
 		const auth = await Auth.validateToken(process.env.TOKEN_ENDPOINT, token)
+		console.log("Auth: ", auth);
 		if (!auth || auth.me != process.env.ME) {
 			return Error.FORBIDDEN
 		}
