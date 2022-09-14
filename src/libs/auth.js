@@ -28,6 +28,9 @@ const Auth = {
 			return Error.INVALID
 		}
 		const token = (headers && headers.authorization && headers.authorization.split(' ')[1]) || (body && body['access_token'])
+		if (!token) {
+			console.log("ERROR: No access token in headers")
+		}
 		return token || Error.UNAUTHORIZED
 	},
 	isAuthorized: async (headers, body) => {
